@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Categorie;
-use app\models\CategorieSearch;
-use app\models\Product;
+use app\models\Brand;
+use app\models\BrandSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CategorieController implements the CRUD actions for Categorie model.
+ * BrandController implements the CRUD actions for Brand model.
  */
-class CategorieController extends Controller
+class BrandController extends Controller
 {
     public function behaviors()
     {
@@ -28,12 +27,12 @@ class CategorieController extends Controller
     }
 
     /**
-     * Lists all Categorie models.
+     * Lists all Brand models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CategorieSearch();
+        $searchModel = new BrandSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,7 +42,7 @@ class CategorieController extends Controller
     }
 
     /**
-     * Displays a single Categorie model.
+     * Displays a single Brand model.
      * @param integer $id
      * @return mixed
      */
@@ -55,13 +54,13 @@ class CategorieController extends Controller
     }
 
     /**
-     * Creates a new Categorie model.
+     * Creates a new Brand model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Categorie();
+        $model = new Brand();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -73,7 +72,7 @@ class CategorieController extends Controller
     }
 
     /**
-     * Updates an existing Categorie model.
+     * Updates an existing Brand model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -92,7 +91,7 @@ class CategorieController extends Controller
     }
 
     /**
-     * Deletes an existing Categorie model.
+     * Deletes an existing Brand model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -100,21 +99,20 @@ class CategorieController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Categorie model based on its primary key value.
+     * Finds the Brand model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Categorie the loaded model
+     * @return Brand the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Categorie::findOne($id)) !== null) {
+        if (($model = Brand::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

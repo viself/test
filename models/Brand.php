@@ -5,19 +5,19 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "viewed".
+ * This is the model class for table "brand".
  *
- * @property integer $ID
- * @property integer $ID_PRODUCT
+ * @property integer $id
+ * @property string $name
  */
-class Viewed extends \yii\db\ActiveRecord
+class Brand extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'viewed';
+        return 'brand';
     }
 
     /**
@@ -26,8 +26,8 @@ class Viewed extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_product'], 'required'],
-            [['id', 'id_product'], 'integer']
+            [['name'], 'required'],
+            [['name'], 'string', 'max' => 20]
         ];
     }
 
@@ -38,7 +38,7 @@ class Viewed extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_product' => 'Id  Product',
+            'name' => 'Name',
         ];
     }
 }
